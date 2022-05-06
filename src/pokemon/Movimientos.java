@@ -15,6 +15,7 @@ abstract class Movimientos{
     this.nombre = nombre;
     this.tipoMov = tipoMov;
     this.consumoEstamina = consumoEstamina;
+  }
 
     public String getNombre() {
         return nombre;
