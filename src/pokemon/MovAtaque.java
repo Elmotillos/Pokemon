@@ -1,41 +1,43 @@
 package pokemon;
-public class MovAtaque {
+public class MovAtaque extends Movimientos{
 
-    protected String nombre;
-    protected int potenciaAtaque;
-    protected Tipo tipo;
-    
-    public MovAtaque() {
-        super();
-        this.nombre = "";
-        this.potenciaAtaque = 0;
-    }
-    
+  private int potenciaAtaque;
+  private Tipo tipo;
+  
     public MovAtaque(int potenciaAtaque, Tipo tipo) {
-        super();
-        this.nombre = nombre;
-        this.potenciaAtaque = potenciaAtaque;
-        this.tipo = tipo;
-    }
-    
-    public String getNombre() {
-        return nombre;
-    }
+    this.potenciaAtaque = potenciaAtaque;
+    this.tipo = tipo;
+}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    public MovAtaque(String nombre, String tipoMov, int consumoEstamina, int potenciaAtaque, Tipo tipo) {
+    super(nombre, tipoMov, consumoEstamina);
+    this.potenciaAtaque = potenciaAtaque;
+    this.tipo = tipo;
+}
+
+
 
     public int getPotenciaAtaque() {
         return potenciaAtaque;
     }
+
     public void setPotenciaAtaque(int potenciaAtaque) {
         this.potenciaAtaque = potenciaAtaque;
     }
+
     public Tipo getTipo() {
         return tipo;
     }
+
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
+    @Override
+    void calculoConsumo() {
+        this.consumoEstamina = this.potenciaAtaque/2;
+        
+    }
+
+ 
 }
