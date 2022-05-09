@@ -14,13 +14,13 @@ CREATE TABLE movimientos(
     id_movimientos int,
     tipo varchar(14),
     nombre_mov varchar(14),
-    nivel int,
     estamina int,
     potencia int,
     num_turno int,
     estado varchar(14),
     mejora varchar(14),
-    cant_mejora int
+    cant_mejora int,
+    tipo_ataque varchar(10)
     );
 	
 	ALTER TABLE movimientos
@@ -50,8 +50,6 @@ add PRIMARY key (id_pokemon);
 ALTER TABLE pokemon_entrenador
 ADD CONSTRAINT fk_id_pokedex FOREIGN KEY (id_pokedex) REFERENCES pokemon(id_pokedex);
 
-ALTER TABLE pokemon_entrenador
-ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
 	
 	CREATE TABLE entrenador(
     id_entrenador int,
@@ -62,14 +60,15 @@ ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenado
 	ALTER TABLE entrenador
 add PRIMARY KEY (id_entrenador);
 	
+ALTER TABLE pokemon_entrenador
+ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
+
 	CREATE TABLE movimientos_pokemon(
     id_pokemon int,
-    id_movimiento int,
-    listamovimiento varchar(14)
+    id_movimiento int
     );
 	
-	ALTER TABLE movimientos_pokemon
-ADD PRIMARY KEY (id_pokemon);
+
 
 ALTER TABLE movimientos_pokemon
 ADD PRIMARY KEY (id_pokemon,id_movimiento);
