@@ -1,4 +1,5 @@
 package pokemon;
+
 public class MovMejora extends Movimientos{
 
     private String mejora;
@@ -6,7 +7,7 @@ public class MovMejora extends Movimientos{
     private int valor;
 
 
-    
+
     public MovMejora(String mejora, int numTurnos, int valor) {
         this.mejora = mejora;
         this.numTurnos = numTurnos;
@@ -16,7 +17,7 @@ public class MovMejora extends Movimientos{
 
 
     public MovMejora(String nombre, String tipoMov, int consumoEstamina, String mejora, int numTurnos, int valor) {
-        super(nombre, tipoMov, consumoEstamina);
+        super(nombre, consumoEstamina);
         this.mejora = mejora;
         this.numTurnos = numTurnos;
         this.valor = valor;
@@ -63,10 +64,6 @@ public class MovMejora extends Movimientos{
     @Override
     void calculoConsumo() {
         this.consumoEstamina = numTurnos * 10;
-        
+
     }
-
- 
-
-    
 }

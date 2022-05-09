@@ -1,29 +1,35 @@
 package pokemon;
+
 public class MovEstado extends Movimientos{
-   
-    private String estado;
+	
+	public enum Estado {
+		
+	    Quemado,Congelado,Dormido,Paralizado,Envenenado,Confundido,SIN_ESTADO
+	}
+
+    private Estado estado;
     private int numTurnos;
 
 
-    public MovEstado(String estado, int numTurnos) {
+    public MovEstado(Estado estado, int numTurnos) {
         this.estado = estado;
         this.numTurnos = numTurnos;
     }
 
 
-    public MovEstado(String nombre, String tipoMov, int consumoEstamina, String estado, int numTurnos) {
-        super(nombre, tipoMov, consumoEstamina);
+    public MovEstado(String nombre, String tipoMov, int consumoEstamina, Estado estado, int numTurnos) {
+        super(nombre, consumoEstamina);
         this.estado = estado;
         this.numTurnos = numTurnos;
     }
 
 
-    public String getEstado() {
+    public Estado getEstado() {
         return estado;
     }
 
 
-    public void setEstado(String estado) {
+    public void setEstado(Estado estado) {
         this.estado = estado;
     }
 
@@ -41,9 +47,6 @@ public class MovEstado extends Movimientos{
     @Override
     void calculoConsumo() {
        this.consumoEstamina = this.numTurnos * 10;
-        
-    }
 
-    
-    
+    }
 }

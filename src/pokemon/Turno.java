@@ -50,5 +50,14 @@ public class Turno {
     }
 
 
+	@Override
+	public String toString() {
+		return "Turno [numTurno=" + numTurno + ", accionEntrnador1=" + accionEntrnador1 + ", accionEntrenador2="
+				+ accionEntrenador2 + "]";
+	}
+    
+    
+
+
     
 }
