@@ -1,85 +1,138 @@
 package pokemon;
 
-public class ClaseEntrenador{
+import java.util.Scanner;
 
-    private Pokemon pokemon1;
-    private Pokemon pokemon2;
-    private Pokemon pokemon3;
-    private Pokemon pokemon4;
-    private Caja caja;
-    private String nombre;
-    //private int pokedollar;
-    //private mochila Objeto;
+public class Entrenador {
 
-    
-    public ClaseEntrenador() {
-        pokemon1 =  new Pokemon();
-        pokemon2 = new Pokemon();
-        pokemon3 = new Pokemon();
-        pokemon4 = new Pokemon();
-        caja = caja;
-        nombre = nombre;
-    }
+	private Pokemon equipo[];
+	private Caja caja;
+	private String nombre;
+	private int pokedollar;
+	// private mochila Objeto;
 
-    public ClaseEntrenador(Pokemon pokemon1, Pokemon pokemon2, Pokemon pokemon3, Pokemon pokemon4, Caja caja,
-            String nombre) {
-        this.pokemon1 = pokemon1;
-        this.pokemon2 = pokemon2;
-        this.pokemon3 = pokemon3;
-        this.pokemon4 = pokemon4;
-        this.caja = caja;
-        this.nombre = nombre;
-    }
+	public Entrenador() {
+		super();
+		equipo = new Pokemon[4];
+		caja = new Caja();
+		nombre = "";
+		pokedollar = 0;
+	}
 
-    public Pokemon getPokemon1() {
-        return pokemon1;
-    }
+	public Entrenador(Pokemon[] equipo, Caja caja, String nombre, int pokedollar) {
+		super();
+		this.equipo = equipo;
+		this.caja = caja;
+		this.nombre = nombre;
+		this.pokedollar = pokedollar;
+	}
 
-    public void setPokemon1(Pokemon pokemon1) {
-        this.pokemon1 = pokemon1;
-    }
+	public Pokemon[] getEquipo() {
+		return equipo;
+	}
 
-    public Pokemon getPokemon2() {
-        return pokemon2;
-    }
+	public void setEquipo(Pokemon[] equipo) {
+		this.equipo = equipo;
+	}
 
-    public void setPokemon2(Pokemon pokemon2) {
-        this.pokemon2 = pokemon2;
-    }
+	public Caja getCaja() {
+		return caja;
+	}
 
-    public Pokemon getPokemon3() {
-        return pokemon3;
-    }
+	public void setCaja(Caja caja) {
+		this.caja = caja;
+	}
 
-    public void setPokemon3(Pokemon pokemon3) {
-        this.pokemon3 = pokemon3;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public Pokemon getPokemon4() {
-        return pokemon4;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setPokemon4(Pokemon pokemon4) {
-        this.pokemon4 = pokemon4;
-    }
+	public int getPokedollar() {
+		return pokedollar;
+	}
 
-    public Caja getCaja() {
-        return caja;
-    }
+	public void setPokedollar(int pokedollar) {
+		this.pokedollar = pokedollar;
+	}
 
-    public void setCaja(Caja caja) {
-        this.caja = caja;
-    }
+	public void moverEquipoCaja() {
 
-    public String getNombre() {
-        return nombre;
-    }
+		Scanner sc = new Scanner(System.in);
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-    
-   
- 
+		int cont = 0;
+		int miembro;
+		for (int i = 0; i < equipo.length; i++) {
+			if (equipo[i] != null) {
+				cont++;
+			}
+		}
+		if (cont <= 1) {
+			System.out.println("El esquipo no puede estar vacio.");
+		} else {
+			do {
+				System.out.println("¿Qué pokemon deseas guardar(1-4)?");
+				miembro = sc.nextInt();
+				miembro--;
 
+			} while (equipo[miembro] == null);
+			
+			caja.getListPokemon().add(equipo[miembro]);
+			equipo[miembro] = null;
+		}
+
+	}
+
+	public void moverCajaEquipo() {
+
+		Scanner sc = new Scanner(System.in);
+
+		int cont = 0;
+		int candidato;
+		Pokemon pokemon;
+
+		if (caja.getListPokemon().isEmpty()) {
+			System.out.println("La caja está vacia");
+		} else {
+
+			for (int i = 0; i < equipo.length; i++) {
+				if (equipo[i] != null) {
+					cont++;
+				}
+			}
+			if (cont == 4) {
+				System.out.println("El esquipo está lleno.");
+			} else {
+
+				System.out.println("Elige el pokemon que deseas unir al equipo.");
+				System.out.println(caja.toString());// Te debe dar el mote y la posición.
+				candidato = sc.nextInt();
+
+				pokemon = caja.getListPokemon().get(candidato);
+				caja.getListPokemon().remove(candidato);
+
+				for (int j = 0; j < equipo.length; j++) {
+					cont = 0;
+					if (equipo[j] == null) {
+						equipo[j] = pokemon;
+						cont = 1;
+					}
+					if (cont == 1) {
+						j = 10;
+					}
+				}
+			}
+		}
+	}
+
+	
+	public void captura() {
+		
+	}
+	
+	
+	
+	
 }
