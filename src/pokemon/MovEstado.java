@@ -1,19 +1,15 @@
 package pokemon;
 
 public class MovEstado extends Movimientos{
-	
-	public enum Estado {
-		
-	    Quemado,Congelado,Dormido,Paralizado,Envenenado,Confundido,SIN_ESTADO
-	}
 
     private Estado estado;
     private int numTurnos;
 
 
-    public MovEstado(Estado estado, int numTurnos) {
-        this.estado = estado;
-        this.numTurnos = numTurnos;
+    public MovEstado() {
+        super();
+        this.estado = Estado.SIN_ESTADO;
+        this.numTurnos = 0;
     }
 
 

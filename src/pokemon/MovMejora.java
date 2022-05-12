@@ -8,10 +8,11 @@ public class MovMejora extends Movimientos{
 
 
 
-    public MovMejora(String mejora, int numTurnos, int valor) {
-        this.mejora = mejora;
-        this.numTurnos = numTurnos;
-        this.valor = valor;
+    public MovMejora() {
+        super();
+        this.mejora = "";
+        this.numTurnos = 0;
+        this.valor = 0;
     }
 
 

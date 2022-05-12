@@ -1,18 +1,14 @@
 package pokemon;
 
-public class MovAtaque extends Movimientos implements Tipos {
-	
-	public enum Tipo {
-		 Agua,Fuego,Planta,Volador,Electrico,Normal,Bicho,Tierra;
-	}
+public class MovAtaque extends Movimientos{
 	
 
 	private int potenciaAtaque;
 	private Tipo tipo;
 
-	public MovAtaque(int potenciaAtaque, Tipo tipo) {
-		this.potenciaAtaque = potenciaAtaque;
-		this.tipo = tipo;
+	public MovAtaque() {
+		super();
+		this.potenciaAtaque = 0;
 	}
 
 	public MovAtaque(String nombre, String tipoMov, int consumoEstamina, int potenciaAtaque, Tipo tipo) {

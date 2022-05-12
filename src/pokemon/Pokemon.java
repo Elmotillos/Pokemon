@@ -2,17 +2,13 @@ package pokemon;
 
 import java.util.Scanner;
 
-public class Pokemon implements Tipos{
-	
-	public enum Tipo {
-		 Agua,Fuego,Planta,Volador,Electrico,Normal,Bicho,Tierra;
-	}
-	
-	public enum Estado {
-		
-	    Quemado,Congelado,Dormido,Paralizado,Envenenado,Confundido,SIN_ESTADO
-	}
-	
+public class Pokemon {
+
+   
+
+    public static final int NEUTRO = 0;
+    public static final int VENTAJA = 1;
+    public static final int DESVENTAJA = -1;
 
     private String nombre;
     private String mote;
@@ -46,7 +42,7 @@ public class Pokemon implements Tipos{
         this.nivel = 0;
         this.kitMov = new Movimientos[4];
         this.fertilidad = 5;
-        this.estado = Pokemon.Estado.SIN_ESTADO;
+        this.estado = Estado.SIN_ESTADO;
         this.exp = 0;
         this.mejora = "";
     }
@@ -236,7 +232,7 @@ public class Pokemon implements Tipos{
 
             if (respuesta == "s") {
 
-                do{
+                do {
 
                     System.out.println("Elige el ataque que quieres sustituir (1-4): ");
 
@@ -245,26 +241,33 @@ public class Pokemon implements Tipos{
                         System.out.println(kitMov[i] + " " + i + 1);
                     }
 
-                opcion = sc.nextInt();
+                    opcion = sc.nextInt();
 
-                if(opcion >= 1 && opcion <= 4){
-                    check = true;
+                    if (opcion >= 1 && opcion <= 4) {
+                        check = true;
 
-                }
-                }while(check = false);
+                    }
+                } while (check == false);
 
-                kitMov[opcion - 1] = ataqueNuevo; 
+                kitMov[opcion - 1] = ataqueNuevo;
 
                 System.out.println("Sustitución ejecutada exitosamente");
 
             }
         }
 
+        sc.close();
+
     }
 
-    public void atacar(){
+    public void atacar(Pokemon pkRival){
 
         Scanner sc = new Scanner(System.in);
+
+        MovAtaque ataque = new MovAtaque();
+        MovEstado estado = new MovEstado();
+        MovMejora mejora = new MovMejora();
+        int potenciaTotal = 0;
 
         int opcion;
         boolean check = false;
@@ -284,22 +287,152 @@ public class Pokemon implements Tipos{
             check = true;
 
         }
-        }while(check = false);
+        }while(check == false);
 
         if(this.kitMov[opcion -1] instanceof MovAtaque){
 
+            ataque = (MovAtaque) kitMov[opcion -1];
+
+            if(ataque.getTipo() == Tipo.Normal){
+
+                potenciaTotal = (this.ataque * ataque.getPotenciaAtaque()) - pkRival.getDefensa();
+           
+            }else if(this.tipo == ataque.getTipo()){
+
+                potenciaTotal = (this.ataque * 3 * ataque.getPotenciaAtaque() / 2) - pkRival.getDefensa();
+
+            }else if(comprobarVentaja(ataque, pkRival) == DESVENTAJA){
+
+                potenciaTotal = (this.ataque * 1 * ataque.getPotenciaAtaque() / 2) - pkRival.getDefensa();
+
+            }
+
+            if(comprobarVentaja(ataque, pkRival) == 1){
+
+                potenciaTotal *= (3/2);
+            }
+
+            
+
+
         }else if (this.kitMov[opcion -1] instanceof MovEstado){
+
+            kitMov[opcion -1] = estado;
+
+            
+            this.estado = estado.getEstado();
+
 
         }else if(this.kitMov[opcion -1] instanceof MovMejora){
 
         }
+
+        sc.close();
     }
 
-	@Override
-	public String toString() {
-		return "Pokemon [mote=" + mote + "]";
-	}
-    
-    
+    public int comprobarVentaja(MovAtaque ataque, Pokemon pkRival) {
+
+        int fortaDebilidad = 0;
+
+        switch (ataque.getTipo()) {
+
+            case Agua:
+                if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Tierra)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Electrico)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Fuego:
+                if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Bicho)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Agua)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Planta:
+                if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Agua)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Bicho)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Bicho:
+                if ((pkRival.getTipo() == Tipo.Agua) || (pkRival.getTipo() == Tipo.Planta)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Volador)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Volador:
+                if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Bicho)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Electrico) || (pkRival.getTipo() == Tipo.Tierra)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Electrico:
+                if ((pkRival.getTipo() == Tipo.Volador) || (pkRival.getTipo() == Tipo.Agua)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Planta)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+            case Tierra:
+                if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Electrico)) {
+                    fortaDebilidad = VENTAJA;
+                } else if ((pkRival.getTipo() == Tipo.Agua) || (pkRival.getTipo() == Tipo.Planta)) {
+                    fortaDebilidad = DESVENTAJA;
+                } else {
+                    fortaDebilidad = NEUTRO;
+                }
+
+                break;
+
+        }
+        return fortaDebilidad;
+    }
+
+    public void comprobarPokemon(Pokemon pokemon, MovAtaque ataque) {
+
+        int ventajaTipo = 0;
+
+        if ((pokemon.getTipo() == ataque.getTipo())) {
+            ventajaTipo = VENTAJA;
+        } else
+            ventajaTipo = NEUTRO;
+
+    }
+
+   
+
+    @Override
+    public String toString() {
+        return "Pokemon [mote=" + mote + "]";
+    }
 
 }
