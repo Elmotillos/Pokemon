@@ -4,435 +4,439 @@ import java.util.Scanner;
 
 public class Pokemon {
 
-   
-
-    public static final int NEUTRO = 0;
-    public static final int VENTAJA = 1;
-    public static final int DESVENTAJA = -1;
-
-    private String nombre;
-    private String mote;
-    private int vitalidad;
-    private int ataque;
-    private int defensa;
-    private int ataqueEspecial;
-    private int defensaEspecial;
-    private int velocidad;
-    private int estamina;
-    private int nivel;
-    private Movimientos kitMov[];
-    private int fertilidad;
-    private Tipo tipo;
-    private Estado estado;
-    private int exp;
-    private String mejora;
-
-    public Pokemon() {
-
-        super();
-        this.nombre = "";
-        this.mote = nombre;
-        this.vitalidad = 0;
-        this.ataque = 0;
-        this.defensa = 0;
-        this.ataqueEspecial = 0;
-        this.defensaEspecial = 0;
-        this.velocidad = 0;
-        this.estamina = 0;
-        this.nivel = 0;
-        this.kitMov = new Movimientos[4];
-        this.fertilidad = 5;
-        this.estado = Estado.SIN_ESTADO;
-        this.exp = 0;
-        this.mejora = "";
-    }
-
-    public Pokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial,
-            int defensaEspecial, int velocidad, int estamina, int nivel, Movimientos[] kitMov, int fertilidad,
-            Tipo tipo, Estado estado, int exp, String mejora) {
-
-        super();
-        this.nombre = nombre;
-        this.mote = mote;
-        this.vitalidad = vitalidad;
-        this.ataque = ataque;
-        this.defensa = defensa;
-        this.ataqueEspecial = ataqueEspecial;
-        this.defensaEspecial = defensaEspecial;
-        this.velocidad = velocidad;
-        this.estamina = estamina;
-        this.nivel = nivel;
-        this.kitMov = kitMov;
-        this.fertilidad = fertilidad;
-        this.tipo = tipo;
-        this.estado = estado;
-        this.exp = exp;
-        this.mejora = mejora;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getMote() {
-        return mote;
-    }
-
-    public void setMote(String mote) {
-        this.mote = mote;
-    }
-
-    public int getVitalidad() {
-        return vitalidad;
-    }
-
-    public void setVitalidad(int vitalidad) {
-        this.vitalidad = vitalidad;
-    }
-
-    public int getAtaque() {
-        return ataque;
-    }
-
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
-    }
-
-    public int getDefensa() {
-        return defensa;
-    }
+	public static final int NEUTRO = 0;
+	public static final int VENTAJA = 1;
+	public static final int DESVENTAJA = -1;
+
+	private String nombre;
+	private String mote;
+	private int vitalidad;
+	private int ataque;
+	private int defensa;
+	private int ataqueEspecial;
+	private int defensaEspecial;
+	private int velocidad;
+	private int estamina;
+	private int nivel;
+	private Movimientos kitMov[];
+	private int fertilidad;
+	private Tipo tipo;
+	private Estado estado;
+	private int exp;
+
+	public Pokemon() {
+
+		super();
+		this.nombre = "";
+		this.mote = nombre;
+		this.vitalidad = 0;
+		this.ataque = 0;
+		this.defensa = 0;
+		this.ataqueEspecial = 0;
+		this.defensaEspecial = 0;
+		this.velocidad = 0;
+		this.estamina = 0;
+		this.nivel = 0;
+		this.kitMov = new Movimientos[4];
+		this.fertilidad = 5;
+		this.estado = Estado.SIN_ESTADO;
+		this.exp = 0;
+	}
+
+	public Pokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial,
+			int defensaEspecial, int velocidad, int estamina, int nivel, Movimientos[] kitMov, int fertilidad,
+			Tipo tipo, Estado estado, int exp) {
+
+		super();
+		this.nombre = nombre;
+		this.mote = mote;
+		this.vitalidad = vitalidad;
+		this.ataque = ataque;
+		this.defensa = defensa;
+		this.ataqueEspecial = ataqueEspecial;
+		this.defensaEspecial = defensaEspecial;
+		this.velocidad = velocidad;
+		this.estamina = estamina;
+		this.nivel = nivel;
+		this.kitMov = kitMov;
+		this.fertilidad = fertilidad;
+		this.tipo = tipo;
+		this.estado = estado;
+		this.exp = exp;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public String getMote() {
+		return mote;
+	}
+
+	public void setMote(String mote) {
+		this.mote = mote;
+	}
+
+	public int getVitalidad() {
+		return vitalidad;
+	}
+
+	public void setVitalidad(int vitalidad) {
+		this.vitalidad = vitalidad;
+	}
+
+	public int getAtaque() {
+		return ataque;
+	}
+
+	public void setAtaque(int ataque) {
+		this.ataque = ataque;
+	}
+
+	public int getDefensa() {
+		return defensa;
+	}
+
+	public void setDefensa(int defensa) {
+		this.defensa = defensa;
+	}
+
+	public int getAtaqueEspecial() {
+		return ataqueEspecial;
+	}
 
-    public void setDefensa(int defensa) {
-        this.defensa = defensa;
-    }
+	public void setAtaqueEspecial(int ataqueEspecial) {
+		this.ataqueEspecial = ataqueEspecial;
+	}
 
-    public int getAtaqueEspecial() {
-        return ataqueEspecial;
-    }
+	public int getDefensaEspecial() {
+		return defensaEspecial;
+	}
 
-    public void setAtaqueEspecial(int ataqueEspecial) {
-        this.ataqueEspecial = ataqueEspecial;
-    }
+	public void setDefensaEspecial(int defensaEspecial) {
+		this.defensaEspecial = defensaEspecial;
+	}
 
-    public int getDefensaEspecial() {
-        return defensaEspecial;
-    }
+	public int getVelocidad() {
+		return velocidad;
+	}
 
-    public void setDefensaEspecial(int defensaEspecial) {
-        this.defensaEspecial = defensaEspecial;
-    }
+	public void setVelocidad(int velocidad) {
+		this.velocidad = velocidad;
+	}
 
-    public int getVelocidad() {
-        return velocidad;
-    }
+	public int getEstamina() {
+		return estamina;
+	}
 
-    public void setVelocidad(int velocidad) {
-        this.velocidad = velocidad;
-    }
+	public void setEstamina(int estamina) {
+		this.estamina = estamina;
+	}
 
-    public int getEstamina() {
-        return estamina;
-    }
+	public int getNivel() {
+		return nivel;
+	}
 
-    public void setEstamina(int estamina) {
-        this.estamina = estamina;
-    }
+	public void setNivel(int nivel) {
+		this.nivel = nivel;
+	}
 
-    public int getNivel() {
-        return nivel;
-    }
+	public Movimientos[] getKitMov() {
+		return kitMov;
+	}
 
-    public void setNivel(int nivel) {
-        this.nivel = nivel;
-    }
+	public void setMovimiento(Movimientos[] kitMov) {
+		this.kitMov = kitMov;
+	}
 
-    public Movimientos[] getKitMov() {
-        return kitMov;
-    }
+	public int getFertilidad() {
+		return fertilidad;
+	}
 
-    public void setMovimiento(Movimientos[] kitMov) {
-        this.kitMov = kitMov;
-    }
+	public void setFertilidad(int fertilidad) {
+		this.fertilidad = fertilidad;
+	}
 
-    public int getFertilidad() {
-        return fertilidad;
-    }
+	public Tipo getTipo() {
+		return tipo;
+	}
 
-    public void setFertilidad(int fertilidad) {
-        this.fertilidad = fertilidad;
-    }
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
 
-    public Tipo getTipo() {
-        return tipo;
-    }
+	public Estado getEstado() {
+		return estado;
+	}
 
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}
 
-    public Estado getEstado() {
-        return estado;
-    }
+	public int getExp() {
+		return exp;
+	}
 
-    public void setEstado(Estado estado) {
-        this.estado = estado;
-    }
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
 
-    public int getExp() {
-        return exp;
-    }
+	public void subirNivel() {
 
-    public void setExp(int exp) {
-        this.exp = exp;
-    }
+		if (this.exp >= 10 * this.nivel) {
 
-    public String getMejora() {
-        return mejora;
-    }
+			this.exp -= (10 * this.nivel);
+			this.nivel++;
 
-    public void setMejora(String mejora) {
-        this.mejora = mejora;
-    }
+			this.vitalidad = this.vitalidad + ((int) Math.random() * 5 + 1);
+			this.ataque = this.ataque + ((int) Math.random() * 5 + 1);
+			this.defensa = this.defensa + ((int) Math.random() * 5 + 1);
+			this.ataqueEspecial = this.ataqueEspecial + ((int) Math.random() * 5 + 1);
+			this.defensaEspecial = this.defensaEspecial + ((int) Math.random() * 5 + 1);
+			this.velocidad = this.velocidad + ((int) Math.random() * 5 + 1);
 
-    public void subirNivel() {
+		}
 
-        if (this.exp == 10 * this.nivel) {
+	}
 
-            this.nivel++;
-            this.exp = 0;
+	public void ataqueNuevo(Movimientos[] kitmov, Movimientos ataqueNuevo) {
 
-            this.vitalidad = this.vitalidad + ((int) Math.random() * 5 + 1);
-            this.ataque = this.ataque + ((int) Math.random() * 5 + 1);
-            this.defensa = this.defensa + ((int) Math.random() * 5 + 1);
-            this.ataqueEspecial = this.ataqueEspecial + ((int) Math.random() * 5 + 1);
-            this.defensaEspecial = this.defensaEspecial + ((int) Math.random() * 5 + 1);
-            this.velocidad = this.velocidad + ((int) Math.random() * 5 + 1);
+		Scanner sc = new Scanner(System.in);
 
-        }
+		int opcion;
+		boolean check = false;
 
-    }
+		if (this.nivel % 3 == 0) {
 
-    public void ataqueNuevo(Movimientos[] kitmov, Movimientos ataqueNuevo) {
+			String respuesta;
+			System.out.println("¿Deseas aprender este ataque? (s/n)");
 
-        Scanner sc = new Scanner(System.in);
+			respuesta = sc.nextLine();
 
-        int opcion;
-        boolean check = false;
+			if (respuesta == "s") {
 
-        if (this.nivel % 3 == 0) {
+				do {
 
-            String respuesta;
-            System.out.println("Â¿Deseas aprender este ataque? (s/n)");
+					System.out.println("Elige el ataque que quieres sustituir (1-4): ");
 
-            respuesta = sc.nextLine();
+					for (int i = 0; i < kitMov.length; i++) {
 
-            if (respuesta == "s") {
+						System.out.println(kitMov[i] + " " + i + 1);
+					}
 
-                do {
+					opcion = sc.nextInt();
 
-                    System.out.println("Elige el ataque que quieres sustituir (1-4): ");
+					if (opcion >= 1 && opcion <= 4) {
+						check = true;
 
-                    for (int i = 0; i < kitMov.length; i++) {
+					}
+				} while (check == false);
 
-                        System.out.println(kitMov[i] + " " + i + 1);
-                    }
+				kitMov[opcion - 1] = ataqueNuevo;
 
-                    opcion = sc.nextInt();
+				System.out.println("Sustitución ejecutada exitosamente");
 
-                    if (opcion >= 1 && opcion <= 4) {
-                        check = true;
+			}
+		}
 
-                    }
-                } while (check == false);
+		sc.close();
 
-                kitMov[opcion - 1] = ataqueNuevo;
+	}
 
-                System.out.println("SustituciÃ³n ejecutada exitosamente");
+	public void atacar(Pokemon pkRival) {
 
-            }
-        }
+		Scanner sc = new Scanner(System.in);
 
-        sc.close();
+		MovAtaque ataque = new MovAtaque();
+		MovEstado estado = new MovEstado();
+		MovMejora mejora = new MovMejora();
+		int potenciaTotal = 0;
 
-    }
+		int opcion;
+		boolean check = false;
 
-    public void atacar(Pokemon pkRival){
+		do {
 
-        Scanner sc = new Scanner(System.in);
+			System.out.println("Elige el ataque (1-4): ");
 
-        MovAtaque ataque = new MovAtaque();
-        MovEstado estado = new MovEstado();
-        MovMejora mejora = new MovMejora();
-        int potenciaTotal = 0;
+			for (int i = 0; i < this.kitMov.length; i++) {
 
-        int opcion;
-        boolean check = false;
+				if (this.kitMov[i] != null) {
+					System.out.println(this.kitMov[i].getNombre() + " " + (i + 1));
+				} else {
+					System.out.println("Sin movimiento.");
+				}
+			}
 
-        do{
+			opcion = sc.nextInt();
 
-            System.out.println("Elige el ataque (1-4): ");
+			if (opcion >= 1 && opcion <= 4) {
+				check = true;
 
-            for (int i = 0; i < this.kitMov.length; i++) {
+			}
+		} while (check == false);
 
-                System.out.println(this.kitMov[i] + " " + i + 1);
-            }
+		if (this.kitMov[opcion - 1] instanceof MovAtaque) {
 
-        opcion = sc.nextInt();
+			ataque = (MovAtaque) kitMov[opcion - 1];
 
-        if(opcion >= 1 && opcion <= 4){
-            check = true;
+			if (ataque.getTipo() == Tipo.NORMAL || ataque.getTipo() != this.tipo) {
 
-        }
-        }while(check == false);
+				potenciaTotal = (this.ataque * ataque.getPotenciaAtaque()) - pkRival.getDefensa();
+			}
+			if (this.tipo == ataque.getTipo() && ataque.getTipo() != Tipo.NORMAL) {
 
-        if(this.kitMov[opcion -1] instanceof MovAtaque){
+				potenciaTotal = (this.ataque * 3 * ataque.getPotenciaAtaque() / 2) - pkRival.getDefensa();
+			}
 
-            ataque = (MovAtaque) kitMov[opcion -1];
+			if (comprobarVentaja(ataque, pkRival) == DESVENTAJA) {
 
-            if(ataque.getTipo() == Tipo.Normal){
+				potenciaTotal = potenciaTotal * 1 / 2;
+			}
+			if (comprobarVentaja(ataque, pkRival) == VENTAJA) {
 
-                potenciaTotal = (this.ataque * ataque.getPotenciaAtaque()) - pkRival.getDefensa();
-           
-            }else if(this.tipo == ataque.getTipo()){
+				potenciaTotal = potenciaTotal * 3 / 2;
+			}
 
-                potenciaTotal = (this.ataque * 3 * ataque.getPotenciaAtaque() / 2) - pkRival.getDefensa();
+			pkRival.setVitalidad(pkRival.getVitalidad() - potenciaTotal);
 
-            }else if(comprobarVentaja(ataque, pkRival) == DESVENTAJA){
+		} else if (this.kitMov[opcion - 1] instanceof MovEstado) {
 
-                potenciaTotal = (this.ataque * 1 * ataque.getPotenciaAtaque() / 2) - pkRival.getDefensa();
+			estado = (MovEstado) kitMov[opcion - 1];
 
-            }
+			pkRival.setEstado(estado.getEstado());
 
-            if(comprobarVentaja(ataque, pkRival) == 1){
+		} else if (this.kitMov[opcion - 1] instanceof MovMejora) {
 
-                potenciaTotal *= (3/2);
-            }
+			mejora = (MovMejora) kitMov[opcion - 1];
+			
+			switch (mejora.getMejora()) {
 
-            
+			case "ataque":
+				this.ataque += mejora.getValor();
+				break;
+			case "defensa":
+				this.defensa += mejora.getValor();
+				break;
+			case "ataqueEspecial":
+				this.ataqueEspecial += mejora.getValor();
+				break;
+			case "defensaEspecial":
+				this.defensaEspecial += mejora.getValor();
+				break;
+			case "velocidad":
+				this.velocidad += mejora.getValor();
+				break;
+			}
+			
 
+		}
 
-        }else if (this.kitMov[opcion -1] instanceof MovEstado){
+		sc.close();
+	}
 
-            kitMov[opcion -1] = estado;
+	public int comprobarVentaja(MovAtaque ataque, Pokemon pkRival) {
 
-            
-            this.estado = estado.getEstado();
+		int fortaDebilidad = 0;
 
+		switch (ataque.getTipo()) {
 
-        }else if(this.kitMov[opcion -1] instanceof MovMejora){
+		case NORMAL:
+			fortaDebilidad = NEUTRO;
+			break;
 
-        }
+		case AGUA:
+			if ((pkRival.getTipo() == Tipo.FUEGO) || (pkRival.getTipo() == Tipo.TIERRA)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.PLANTA) || (pkRival.getTipo() == Tipo.ELECTRICO)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-        sc.close();
-    }
+			break;
 
-    public int comprobarVentaja(MovAtaque ataque, Pokemon pkRival) {
+		case FUEGO:
+			if ((pkRival.getTipo() == Tipo.PLANTA) || (pkRival.getTipo() == Tipo.BICHO)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.TIERRA) || (pkRival.getTipo() == Tipo.AGUA)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-        int fortaDebilidad = 0;
+			break;
 
-        switch (ataque.getTipo()) {
+		case PLANTA:
+			if ((pkRival.getTipo() == Tipo.TIERRA) || (pkRival.getTipo() == Tipo.AGUA)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.FUEGO) || (pkRival.getTipo() == Tipo.BICHO)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-            case Agua:
-                if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Tierra)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Electrico)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+			break;
 
-                break;
+		case BICHO:
+			if ((pkRival.getTipo() == Tipo.AGUA) || (pkRival.getTipo() == Tipo.PLANTA)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.FUEGO) || (pkRival.getTipo() == Tipo.VOLADOR)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-            case Fuego:
-                if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Bicho)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Agua)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+			break;
 
-                break;
+		case VOLADOR:
+			if ((pkRival.getTipo() == Tipo.PLANTA) || (pkRival.getTipo() == Tipo.BICHO)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.ELECTRICO) || (pkRival.getTipo() == Tipo.TIERRA)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-            case Planta:
-                if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Agua)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Bicho)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+			break;
 
-                break;
+		case ELECTRICO:
+			if ((pkRival.getTipo() == Tipo.VOLADOR) || (pkRival.getTipo() == Tipo.AGUA)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.TIERRA) || (pkRival.getTipo() == Tipo.PLANTA)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-            case Bicho:
-                if ((pkRival.getTipo() == Tipo.Agua) || (pkRival.getTipo() == Tipo.Planta)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Volador)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+			break;
 
-                break;
+		case TIERRA:
+			if ((pkRival.getTipo() == Tipo.FUEGO) || (pkRival.getTipo() == Tipo.ELECTRICO)) {
+				fortaDebilidad = VENTAJA;
+			} else if ((pkRival.getTipo() == Tipo.AGUA) || (pkRival.getTipo() == Tipo.PLANTA)) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
-            case Volador:
-                if ((pkRival.getTipo() == Tipo.Planta) || (pkRival.getTipo() == Tipo.Bicho)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Electrico) || (pkRival.getTipo() == Tipo.Tierra)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+			break;
 
-                break;
+		default:
+			break;
 
-            case Electrico:
-                if ((pkRival.getTipo() == Tipo.Volador) || (pkRival.getTipo() == Tipo.Agua)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Tierra) || (pkRival.getTipo() == Tipo.Planta)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
+		}
+		return fortaDebilidad;
+	}
 
-                break;
 
-            case Tierra:
-                if ((pkRival.getTipo() == Tipo.Fuego) || (pkRival.getTipo() == Tipo.Electrico)) {
-                    fortaDebilidad = VENTAJA;
-                } else if ((pkRival.getTipo() == Tipo.Agua) || (pkRival.getTipo() == Tipo.Planta)) {
-                    fortaDebilidad = DESVENTAJA;
-                } else {
-                    fortaDebilidad = NEUTRO;
-                }
-
-                break;
-
-        }
-        return fortaDebilidad;
-    }
-
-    public void comprobarPokemon(Pokemon pokemon, MovAtaque ataque) {
-
-        int ventajaTipo = 0;
-
-        if ((pokemon.getTipo() == ataque.getTipo())) {
-            ventajaTipo = VENTAJA;
-        } else
-            ventajaTipo = NEUTRO;
-
-    }
-
-   
-
-    @Override
-    public String toString() {
-        return "Pokemon [mote=" + mote + "]";
-    }
+	@Override
+	public String toString() {
+		return "Pokemon [mote=" + mote + "]";
+	}
 
 }

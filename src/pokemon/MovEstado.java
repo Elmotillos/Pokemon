@@ -13,8 +13,8 @@ public class MovEstado extends Movimientos{
     }
 
 
-    public MovEstado(String nombre, String tipoMov, int consumoEstamina, Estado estado, int numTurnos) {
-        super(nombre, consumoEstamina);
+    public MovEstado(String nombre, int consumoEstamina, Estado estado, int numTurnos) {
+        super(nombre);
         this.estado = estado;
         this.numTurnos = numTurnos;
     }
@@ -41,8 +41,10 @@ public class MovEstado extends Movimientos{
 
 
     @Override
-    void calculoConsumo() {
-       this.consumoEstamina = this.numTurnos * 10;
+    int calculoConsumo() {
+       int consumoEstamina = this.numTurnos * 10;
+       
+		return consumoEstamina;
 
     }
 }

@@ -87,6 +87,14 @@ public class Combate {
 		this.ganador = rival.getNombre();
 	}
 	
+	public void ganarExp() {
+		
+		
+	}
+	
+	
+	
+	
 	public void pagar() {
 		
 		int dineroPagar;

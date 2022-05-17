@@ -8,7 +8,6 @@ public class Entrenador {
 	private Caja caja;
 	private String nombre;
 	private int pokedollar;
-	// private mochila Objeto;
 
 	public Entrenador() {
 		super();
@@ -109,7 +108,7 @@ public class Entrenador {
 			} else {
 
 				System.out.println("Elige el pokemon que deseas unir al equipo.");
-				System.out.println(caja.toString());// Te debe dar el mote y la posición.
+				System.out.println(caja.toString());// Te debe dar el mote 
 				candidato = sc.nextInt();
 
 				pokemon = caja.getListPokemon().get(candidato);

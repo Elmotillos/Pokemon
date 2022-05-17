@@ -6,12 +6,11 @@ abstract class Movimientos {
 
     public Movimientos() {
       this.nombre = "";
-      this.consumoEstamina = 0;
+      this.consumoEstamina = calculoConsumo();
     }
 
-    public Movimientos(String nombre, int consumoEstamina) {
+    public Movimientos(String nombre) {
       this.nombre = nombre;
-      this.consumoEstamina = consumoEstamina;
     }
 
       public String getNombre() {
@@ -27,10 +26,10 @@ abstract class Movimientos {
       }
 
       public void setConsumoEstamina(int consumoEstamina) {
-          this.consumoEstamina = consumoEstamina;
+    	  this.consumoEstamina = consumoEstamina;
       }
 
-      abstract void calculoConsumo();
+      abstract int calculoConsumo();
 
 
   } 
