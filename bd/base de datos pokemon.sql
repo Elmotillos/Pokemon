@@ -2,7 +2,6 @@ CREATE TABLE pokemon(
     id_pokedex int,
     nombre varchar(14),
     tipo1 varchar(14),
-    tipo2 varchar(14),
     imagen varchar(50),
     sonido varchar(50)
 ); 
@@ -14,13 +13,13 @@ CREATE TABLE movimientos(
     id_movimientos int,
     tipo varchar(14),
     nombre_mov varchar(14),
-    estamina int,
     potencia int,
     num_turno int,
     estado varchar(14),
     mejora varchar(14),
     cant_mejora int,
-    tipo_ataque varchar(10)
+    tipo_ataque varchar(10),
+    forma_ataque int
     );
 	
 	ALTER TABLE movimientos
@@ -39,7 +38,6 @@ CREATE TABLE pokemon_entrenador(
     estamina int,
     nivel int,
     velocidad int,
-    fertilidad int,
     experiencia int,
     equipo int
     );
@@ -54,7 +52,7 @@ ADD CONSTRAINT fk_id_pokedex FOREIGN KEY (id_pokedex) REFERENCES pokemon(id_poke
 	CREATE TABLE entrenador(
     id_entrenador int,
     nombre varchar(14),
-    pokemonedas int
+    pokemonedas int,
     );
 	
 	ALTER TABLE entrenador
@@ -78,7 +76,7 @@ CREATE TABLE combate(
     id_combate int,
     id_entrenador int,
     id_rival int,
-    ganador int,
+    id_ganador int,
     pokemon_jugador_ko int,
     pokemon_rival_ko int
     );
