@@ -2,16 +2,13 @@ package pokemon;
 abstract class Movimientos {
 
     protected String nombre;
-    protected int consumoEstamina;
 
     public Movimientos() {
       this.nombre = "";
-      this.consumoEstamina = 0;
     }
 
-    public Movimientos(String nombre, int consumoEstamina) {
+    public Movimientos(String nombre) {
       this.nombre = nombre;
-      this.consumoEstamina = consumoEstamina;
     }
 
       public String getNombre() {
@@ -22,15 +19,7 @@ abstract class Movimientos {
           this.nombre = nombre;
       }
 
-      public int getConsumoEstamina() {
-          return consumoEstamina;
-      }
-
-      public void setConsumoEstamina(int consumoEstamina) {
-          this.consumoEstamina = consumoEstamina;
-      }
-
-      abstract void calculoConsumo();
+      abstract int calculoConsumo();
 
 
   } 

@@ -1,7 +1,6 @@
 package pokemon;
 
-public class MovAtaque extends Movimientos{
-	
+public class MovAtaque extends Movimientos {
 
 	private int potenciaAtaque;
 	private Tipo tipo;
@@ -11,8 +10,8 @@ public class MovAtaque extends Movimientos{
 		this.potenciaAtaque = 0;
 	}
 
-	public MovAtaque(String nombre, String tipoMov, int consumoEstamina, int potenciaAtaque, Tipo tipo) {
-		super(nombre, consumoEstamina);
+	public MovAtaque(String nombre, int potenciaAtaque, Tipo tipo) {
+		super(nombre);
 		this.potenciaAtaque = potenciaAtaque;
 		this.tipo = tipo;
 	}
@@ -34,8 +33,10 @@ public class MovAtaque extends Movimientos{
 	}
 
 	@Override
-	void calculoConsumo() {
-		this.consumoEstamina = this.potenciaAtaque / 2;
+	int calculoConsumo() {
+		int consumoEstamina = this.potenciaAtaque / 2;
+
+		return consumoEstamina;
 
 	}
 
