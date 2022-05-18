@@ -1,5 +1,6 @@
 package pokemon;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Pokemon {
@@ -197,7 +198,7 @@ public class Pokemon {
 		if (this.nivel % 3 == 0) {
 
 			String respuesta;
-			System.out.println("¿Deseas aprender este ataque? (s/n)");
+			System.out.println("ï¿½Deseas aprender este ataque? (s/n)");
 
 			respuesta = sc.nextLine();
 
@@ -222,7 +223,7 @@ public class Pokemon {
 
 				kitMov[opcion - 1] = ataqueNuevo;
 
-				System.out.println("Sustitución ejecutada exitosamente");
+				System.out.println("Sustituciï¿½n ejecutada exitosamente");
 
 			}
 		}
@@ -477,9 +478,17 @@ public class Pokemon {
 		return pokemonGenerado;
 	}
 
+	public String mostrarPokemon() {
+		return "Pokemon [ataque=" + ataque + ", ataqueEspecial=" + ataqueEspecial + ", defensa=" + defensa
+				+ ", defensaEspecial=" + defensaEspecial + ", estado=" + estado + ", estamina=" + estamina + ", exp="
+				+ exp + ", kitMov=" + Arrays.toString(kitMov) + ", mote=" + mote + ", nivel=" + nivel + ", tipo=" + tipo + ", velocidad=" + velocidad + ", vitalidad=" + vitalidad + "]";
+	}
+
 	@Override
 	public String toString() {
 		return "Pokemon [mote=" + mote + "]";
 	}
+
+
 
 }
