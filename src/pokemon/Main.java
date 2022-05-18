@@ -18,10 +18,10 @@ public class Main {
 		kitmov2[0] = ataque;
 		kitmov2[1] = estado;
 		
-		Pokemon pokemon1 = new Pokemon("Charizard","Juan",100,10,10,10,10,10,10,50,kitmov1
+		Pokemon pokemon1 = new Pokemon("Charizard",1,"Juan",100,10,10,10,10,10,10,50,kitmov1
 				,Tipo.PLANTA,Estado.SIN_ESTADO,0);
 		
-		Pokemon pokemon2 = new Pokemon("Charizard","Pedro",100,10,10,10,10,10,10,50,kitmov2
+		Pokemon pokemon2 = new Pokemon("Charizard",1,"Pedro",100,10,10,10,10,10,10,50,kitmov2
 				,Tipo.FUEGO,Estado.SIN_ESTADO,0);
 		
 		Pokemon pokemon3 = new Pokemon();

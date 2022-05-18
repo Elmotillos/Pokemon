@@ -121,10 +121,12 @@ public class Combate {
 		
 	}
 	
-	public void combatir() {
+	public String combatir() {
 		
 		
 		
+		
+		return "El ganador es: "+ganador;
 	}
 
 	

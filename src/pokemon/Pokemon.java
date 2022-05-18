@@ -10,6 +10,7 @@ public class Pokemon {
 	public static final int DESVENTAJA = -1;
 
 	private String nombre;
+	private int numPokedex;
 	private String mote;
 	private int vitalidad;
 	private int ataque;
@@ -28,6 +29,7 @@ public class Pokemon {
 
 		super();
 		this.nombre = "";
+		this.numPokedex = 0;
 		this.mote = nombre;
 		this.vitalidad = 0;
 		this.ataque = 0;
@@ -42,12 +44,13 @@ public class Pokemon {
 		this.exp = 0;
 	}
 
-	public Pokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial,
+	public Pokemon(String nombre,int numPokedex, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial,
 			int defensaEspecial, int velocidad, int estamina, int nivel, Movimientos[] kitMov, Tipo tipo, Estado estado,
 			int exp) {
 
 		super();
 		this.nombre = nombre;
+		this.numPokedex = numPokedex;
 		this.mote = mote;
 		this.vitalidad = vitalidad;
 		this.ataque = ataque;
@@ -69,6 +72,14 @@ public class Pokemon {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public int getNumPokedex() {
+		return numPokedex;
+	}
+
+	public void setNumPokedex(int numPokedex) {
+		this.numPokedex = numPokedex;
 	}
 
 	public String getMote() {
