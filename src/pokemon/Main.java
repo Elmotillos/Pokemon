@@ -24,6 +24,8 @@ public class Main {
 		Pokemon pokemon2 = new Pokemon("Charizard","Pedro",100,10,10,10,10,10,10,50,kitmov2
 				,Tipo.FUEGO,Estado.SIN_ESTADO,0);
 		
+		Pokemon pokemon3 = new Pokemon();
+		
 		
 		Pokemon equipo1[] = new Pokemon[4];
 		Pokemon equipo2[] = new Pokemon[4];
@@ -41,12 +43,11 @@ public class Main {
 		
 		Combate pelea = new Combate(entrenador2,entrenador1,combate,"Nadie",0,0);
 		
-		pokemon2.atacar(pokemon1);
+		pokemon3 = Pokemon.generarPokemon();
 		
-		System.out.println(pokemon2.getEstamina());
-		
-
+	
 	}
+}
 
 	 
 		   

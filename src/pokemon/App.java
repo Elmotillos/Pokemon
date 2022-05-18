@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.sql.*;
 
 public class App extends Main {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         //launch(args);
 
         String url = "jdbc:mysql://localhost:3306/pokemon ";

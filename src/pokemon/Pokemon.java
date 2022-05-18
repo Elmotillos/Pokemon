@@ -176,9 +176,6 @@ public class Pokemon {
 
 	public void subirNivel() {
 
-		if (this.exp >= 10 * this.nivel) {
-
-			this.exp -= (10 * this.nivel);
 			this.nivel++;
 
 			this.vitalidad = this.vitalidad + ((int) Math.random() * 5 + 1);
@@ -187,8 +184,6 @@ public class Pokemon {
 			this.ataqueEspecial = this.ataqueEspecial + ((int) Math.random() * 5 + 1);
 			this.defensaEspecial = this.defensaEspecial + ((int) Math.random() * 5 + 1);
 			this.velocidad = this.velocidad + ((int) Math.random() * 5 + 1);
-
-		}
 
 	}
 
@@ -456,12 +451,30 @@ public class Pokemon {
 			}
 
 			break;
+			
+		case VENENO:
+			if (pkRival.getTipo() == Tipo.PLANTA) {
+				fortaDebilidad = VENTAJA;
+			} else if (pkRival.getTipo() == Tipo.TIERRA) {
+				fortaDebilidad = DESVENTAJA;
+			} else {
+				fortaDebilidad = NEUTRO;
+			}
 
 		default:
 			break;
 
 		}
 		return fortaDebilidad;
+	}
+	
+	public static Pokemon generarPokemon() {
+		
+		Pokemon pokemonGenerado = new Pokemon();
+		
+		pokemonGenerado.subirNivel();
+		
+		return pokemonGenerado;
 	}
 
 	@Override

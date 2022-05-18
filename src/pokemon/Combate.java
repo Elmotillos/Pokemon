@@ -93,7 +93,11 @@ public class Combate {
 		gananciaExp = pokemonVencedor.getNivel() + (pokemonDerrotado.getNivel()*10)/4;
 		
 		pokemonVencedor.setExp(gananciaExp + pokemonVencedor.getExp());
+		
+		while(pokemonVencedor.getExp() >= 10 * pokemonVencedor.getNivel()) {
 		pokemonVencedor.subirNivel();
+		pokemonVencedor.setExp(pokemonVencedor.getExp() - (10 * pokemonVencedor.getNivel()));
+		}
 		
 	}
 		
@@ -113,6 +117,12 @@ public class Combate {
 			rival.setPokedollar(rival.getPokedollar() + dineroPagar);
 			entrenador.setPokedollar(entrenador.getPokedollar() - dineroPagar);
 		}
+		
+		
+	}
+	
+	public void combatir() {
+		
 		
 		
 	}
