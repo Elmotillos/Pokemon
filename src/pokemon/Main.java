@@ -14,14 +14,14 @@ public class Main {
 		Movimientos kitmov1[]= new Movimientos[4];
 		Movimientos kitmov2[]= new Movimientos[4];
 		
-		kitmov2[0] = mejora;
+		kitmov2[0] = ataque;
 		kitmov2[1] = estado;
 		
 		Pokemon pokemon1 = new Pokemon("Charizard","Juan",100,10,10,10,10,10,10,50,kitmov1
-				,5,Tipo.PLANTA,Estado.SIN_ESTADO,0);
+				,Tipo.PLANTA,Estado.SIN_ESTADO,0);
 		
 		Pokemon pokemon2 = new Pokemon("Charizard","Pedro",100,10,10,10,10,10,10,50,kitmov2
-				,5,Tipo.FUEGO,Estado.SIN_ESTADO,0);
+				,Tipo.FUEGO,Estado.SIN_ESTADO,0);
 		
 		
 		Pokemon equipo1[] = new Pokemon[4];
@@ -39,6 +39,10 @@ public class Main {
 		List<Turno>	combate = new LinkedList<Turno>();	
 		
 		Combate pelea = new Combate(entrenador2,entrenador1,combate,"Nadie",0,0);
+		
+		pokemon2.atacar(pokemon1);
+		
+		System.out.println(pokemon2.getEstamina());
 		
 
 	}

@@ -19,7 +19,6 @@ public class Pokemon {
 	private int estamina;
 	private int nivel;
 	private Movimientos kitMov[];
-	private int fertilidad;
 	private Tipo tipo;
 	private Estado estado;
 	private int exp;
@@ -38,14 +37,13 @@ public class Pokemon {
 		this.estamina = 0;
 		this.nivel = 0;
 		this.kitMov = new Movimientos[4];
-		this.fertilidad = 5;
 		this.estado = Estado.SIN_ESTADO;
 		this.exp = 0;
 	}
 
 	public Pokemon(String nombre, String mote, int vitalidad, int ataque, int defensa, int ataqueEspecial,
-			int defensaEspecial, int velocidad, int estamina, int nivel, Movimientos[] kitMov, int fertilidad,
-			Tipo tipo, Estado estado, int exp) {
+			int defensaEspecial, int velocidad, int estamina, int nivel, Movimientos[] kitMov,Tipo tipo, 
+			Estado estado, int exp) {
 
 		super();
 		this.nombre = nombre;
@@ -59,7 +57,6 @@ public class Pokemon {
 		this.estamina = estamina;
 		this.nivel = nivel;
 		this.kitMov = kitMov;
-		this.fertilidad = fertilidad;
 		this.tipo = tipo;
 		this.estado = estado;
 		this.exp = exp;
@@ -151,14 +148,6 @@ public class Pokemon {
 
 	public void setMovimiento(Movimientos[] kitMov) {
 		this.kitMov = kitMov;
-	}
-
-	public int getFertilidad() {
-		return fertilidad;
-	}
-
-	public void setFertilidad(int fertilidad) {
-		this.fertilidad = fertilidad;
 	}
 
 	public Tipo getTipo() {
@@ -283,6 +272,8 @@ public class Pokemon {
 		if (this.kitMov[opcion - 1] instanceof MovAtaque) {
 
 			ataque = (MovAtaque) kitMov[opcion - 1];
+			
+			this.estamina -= ataque.calculoConsumo(); 
 
 			if (ataque.getTipo() == Tipo.NORMAL || ataque.getTipo() != this.tipo) {
 
