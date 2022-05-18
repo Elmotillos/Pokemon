@@ -8,6 +8,7 @@ abstract class Movimientos {
     }
 
     public Movimientos(String nombre) {
+    	super();
       this.nombre = nombre;
     }
 

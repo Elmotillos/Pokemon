@@ -7,7 +7,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		MovAtaque ataque = new MovAtaque("Pepinazo",5,Tipo.FUEGO);
+		MovAtaque ataque = new MovAtaque("Pepinazo",5,Tipo.FUEGO,MovAtaque.FISICO);
 		MovMejora mejora = new MovMejora("Empapeeee","ataque",5,10);
 		MovEstado estado = new MovEstado("Aceite",Estado.QUEMADO,5);
 		

@@ -87,13 +87,16 @@ public class Combate {
 		this.ganador = rival.getNombre();
 	}
 	
-	public void ganarExp() {
+	public void ganarExp(Pokemon pokemonVencedor,Pokemon pokemonDerrotado) {
 		
+		int gananciaExp;
+		gananciaExp = pokemonVencedor.getNivel() + (pokemonDerrotado.getNivel()*10)/4;
+		
+		pokemonVencedor.setExp(gananciaExp + pokemonVencedor.getExp());
+		pokemonVencedor.subirNivel();
 		
 	}
-	
-	
-	
+		
 	
 	public void pagar() {
 		
