@@ -13,7 +13,7 @@ public class MovMejora extends Movimientos {
 		this.valor = 0;
 	}
 
-	public MovMejora(String nombre, int consumoEstamina, String mejora, int numTurnos, int valor) {
+	public MovMejora(String nombre, String mejora, int numTurnos, int valor) {
 		super(nombre);
 		this.mejora = mejora;
 		this.numTurnos = numTurnos;

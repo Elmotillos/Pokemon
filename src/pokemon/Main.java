@@ -8,8 +8,8 @@ public class Main {
 	public static void main(String[] args) {
 		
 		MovAtaque ataque = new MovAtaque("Pepinazo",5,Tipo.FUEGO);
-		MovMejora mejora = new MovMejora("Empapeeee",0,"ataque",5,10);
-		MovEstado estado = new MovEstado("Aceite",0,Estado.QUEMADO,5);
+		MovMejora mejora = new MovMejora("Empapeeee","ataque",5,10);
+		MovEstado estado = new MovEstado("Aceite",Estado.QUEMADO,5);
 		
 		Movimientos kitmov1[]= new Movimientos[4];
 		Movimientos kitmov2[]= new Movimientos[4];
@@ -39,10 +39,6 @@ public class Main {
 		List<Turno>	combate = new LinkedList<Turno>();	
 		
 		Combate pelea = new Combate(entrenador2,entrenador1,combate,"Nadie",0,0);
-		
-
-		
-		System.out.println(ataque.getConsumoEstamina());
 		
 
 	}
