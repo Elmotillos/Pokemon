@@ -6,8 +6,6 @@ CREATE TABLE pokemon(
     sonido varchar(50)
 ); 
 
-alter TABLE pokemon
-add PRIMARY KEY (id_pokedex);
 
 CREATE TABLE movimientos(
     id_movimientos int,
@@ -22,8 +20,6 @@ CREATE TABLE movimientos(
     forma_ataque int
     );
 	
-	ALTER TABLE movimientos
-add PRIMARY KEY (id_movimientos);
 
 CREATE TABLE pokemon_entrenador(
     id_pokemon int,
@@ -41,25 +37,13 @@ CREATE TABLE pokemon_entrenador(
     experiencia int,
     equipo int
     );
-	
-	ALTER TABLE pokemon_entrenador
-add PRIMARY key (id_pokemon);
 
-ALTER TABLE pokemon_entrenador
-ADD CONSTRAINT fk_id_pokedex FOREIGN KEY (id_pokedex) REFERENCES pokemon(id_pokedex);
-
-	
 	CREATE TABLE entrenador(
     id_entrenador int,
     nombre varchar(14),
-    pokemonedas int,
+    pokemonedas int
     );
-	
-	ALTER TABLE entrenador
-add PRIMARY KEY (id_entrenador);
-	
-ALTER TABLE pokemon_entrenador
-ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
+
 
 	CREATE TABLE movimientos_pokemon(
     id_pokemon int,
@@ -68,8 +52,6 @@ ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenado
 	
 
 
-ALTER TABLE movimientos_pokemon
-ADD PRIMARY KEY (id_pokemon,id_movimiento);
 
 
 CREATE TABLE combate(
@@ -81,17 +63,6 @@ CREATE TABLE combate(
     pokemon_rival_ko int
     );
 	
-	ALTER TABLE combate
-ADD PRIMARY KEY (id_combate);
-
-ALTER TABLE combate
-ADD CONSTRAINT fk_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
-
-ALTER TABLE combate
-ADD CONSTRAINT fk_rival FOREIGN KEY (id_rival) REFERENCES entrenador(id_entrenador);
-
-ALTER TABLE combate
-ADD CONSTRAINT fk_ganador FOREIGN KEY (ganador) REFERENCES entrenador(id_entrenador);
 
 CREATE TABLE turno(
     id_combate int,
@@ -105,3 +76,37 @@ ADD PRIMARY KEY (id_combate,num_turno);
 
 ALTER TABLE turno
 ADD CONSTRAINT fk_combate_turno FOREIGN KEY (id_combate) REFERENCES combate(id_combate);
+
+alter TABLE pokemon
+add PRIMARY KEY (id_pokedex);
+	
+    ALTER TABLE movimientos
+add PRIMARY KEY (id_movimientos);
+	
+    ALTER TABLE pokemon_entrenador
+add PRIMARY key (id_pokemon);
+
+ALTER TABLE entrenador
+add PRIMARY KEY (id_entrenador);
+
+ALTER TABLE pokemon_entrenador
+ADD CONSTRAINT fk_id_pokedex FOREIGN KEY (id_pokedex) REFERENCES pokemon(id_pokedex);
+
+	
+ALTER TABLE pokemon_entrenador
+ADD CONSTRAINT fk_id_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
+
+ALTER TABLE movimientos_pokemon
+ADD PRIMARY KEY (id_pokemon,id_movimiento);
+	
+    ALTER TABLE combate
+ADD PRIMARY KEY (id_combate);
+
+ALTER TABLE combate
+ADD CONSTRAINT fk_entrenador FOREIGN KEY (id_entrenador) REFERENCES entrenador(id_entrenador);
+
+ALTER TABLE combate
+ADD CONSTRAINT fk_rival FOREIGN KEY (id_rival) REFERENCES entrenador(id_entrenador);
+
+ALTER TABLE combate
+ADD CONSTRAINT fk_ganador FOREIGN KEY (id_ganador) REFERENCES entrenador(id_entrenador);
