@@ -1,6 +1,9 @@
 package pokemon;
 
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Pokemon {
@@ -506,6 +509,14 @@ public class Pokemon {
 		
 		Pokemon pokemonGenerado = new Pokemon();
 		
+		 List<Pokemon> pokedex = new LinkedList<>();
+		 try {
+			pokedex = DbConexion.cargarPokemon();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		pokemonGenerado = pokedex.get((int) Math.random() * (pokedex.size()-1) + 0);
 		pokemonGenerado.subirNivel();
 		
 		return pokemonGenerado;
