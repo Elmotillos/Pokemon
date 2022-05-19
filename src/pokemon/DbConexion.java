@@ -1,11 +1,15 @@
 package pokemon;
 
-import java.io.IOException;
 import java.sql.*;
 import javax.sql.*;
+import java.util.LinkedList;
+import java.util.List;
 
-public class App extends Main {
-    public static void main(String[] args) {
+public class DbConexion {
+
+    private static Connection conexion;
+
+    public static void establecerConexion() {
         //launch(args);
 
         String url = "jdbc:mysql://localhost:3306/pokemon ";
@@ -14,20 +18,7 @@ public class App extends Main {
 		try {
 
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		    Connection connection = DriverManager.getConnection(url, login, password);
-
-		    System.out.println("Conexión establecida");
-            mostrarPokemon(connection);
-
-            insertarPokemon(connection,pokemon);
-
-
-            try {
-				connection.close();
-				System.out.println("Conexión cerrada");
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+		    conexion = DriverManager.getConnection(url, login, password);
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -37,11 +28,20 @@ public class App extends Main {
         
     }
 
+    public static void cerrarConexion(){
+        try {
+            conexion.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-    public static void mostrarPokemon(Connection con) throws SQLException {
-		String pok="Charizard";		
+    public static List<Pokemon> cargarPokemon() throws SQLException {
+		//String pok="Charizard";		
+        LinkedList<Pokemon> listaPokemon = new LinkedList<>();
         String consulta = "SELECT * FROM POKEDEX";
-        Statement statement = con.createStatement();
+        Statement statement = conexion.createStatement();
         ResultSet rs = statement.executeQuery(consulta);
 
         Pokemon e = null;
@@ -50,15 +50,13 @@ public class App extends Main {
             e.setNumPokedex(rs.getInt("num_pokedex"));
             e.setNombre(rs.getString("nom_pokemon"));
             e.setTipo(Tipo.valueOf(rs.getString("tipo")));
-            
-            
-            
-            System.out.println(e.toString());
+            listaPokemon.add(e);
         }
         statement.close();
+        return listaPokemon;
     }
 
-    public static void insertarPokemon(Connection con, Pokemon p) throws SQLException {
+    public static void insertarPokemon(Pokemon p) throws SQLException {
 		String sentencia ="INSERT INTO pokemon_entrenador(id_pokemon, id_pokedex, id_entrenador, mote, vitalidad, ataque, defensa, ataque_esp, defensa_esp, estamina, nivel, velocidad, experiencia, equipo) VALUES("+ p.getNumPokemon()
                                                        +",'"+p.getNumPokedex()
                                                        +",'"+p.getIdEntrenador()
@@ -75,7 +73,7 @@ public class App extends Main {
                                                        +"')";
 		Statement stmt = null;
 		try {
-			stmt = con.createStatement();
+			stmt = conexion.createStatement();
 			stmt.executeUpdate(sentencia);
 			
 			System.out.println("Nuevo pokemon insertado. "+p.getNombre());
@@ -89,24 +87,4 @@ public class App extends Main {
 	}
 
 
-
-
-
-    
-   /* @Override
-    public void start(Stage primaryStage) {
-        Parent root;
-        try {
-            root = FXMLLoader.load(getClass().getResource("prueba.fxml"));
-            Scene scene = new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        
-    }*/
-    
 }

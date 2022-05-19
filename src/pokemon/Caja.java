@@ -1,11 +1,12 @@
 package pokemon;
 
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Caja {
 
-    private List<Pokemon>  listPokemon;
+    private List<Pokemon> listPokemon;
 
     public Caja() {
         this.listPokemon = new LinkedList<Pokemon>();
@@ -26,6 +27,18 @@ public class Caja {
 	//Cambiar el método para que se pueda mostrar el interior.
 	public String toString() {
 		return "Caja [listPokemon=" + listPokemon + "]";
+	}
+
+	public void cargarListaPokemon(){
+		DbConexion.establecerConexion();
+		try {
+			this.listPokemon = DbConexion.cargarPokemon();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		DbConexion.cerrarConexion();
+
 	}
 
 }
